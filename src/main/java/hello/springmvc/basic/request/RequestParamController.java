@@ -3,10 +3,7 @@ package hello.springmvc.basic.request;
 import hello.springmvc.basic.HelloData;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -96,10 +93,7 @@ public class RequestParamController {
 
     @ResponseBody
     @RequestMapping("/model-arribute-v1")
-    public String modelAttributeV1(@RequestParam String username,@RequestParam int age){
-        HelloData helloData = new HelloData();
-        helloData.setAge(12);
-        helloData.setUsername("kim");
+    public String modelAttributeV1(@ModelAttribute HelloData helloData){
 
         log.info("username = {} / age = {}",helloData.getUsername(),helloData.getAge());
         log.info("Hello Data = {}",helloData);
