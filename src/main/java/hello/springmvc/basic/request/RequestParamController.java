@@ -2,6 +2,7 @@ package hello.springmvc.basic.request;
 
 import hello.springmvc.basic.HelloData;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.context.properties.bind.DefaultValue;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -93,8 +94,16 @@ public class RequestParamController {
 
     @ResponseBody
     @RequestMapping("/model-arribute-v1")
-    public String modelAttributeV1(@ModelAttribute HelloData helloData){
+    public String modelAttributeV1(@ModelAttribute() HelloData helloData){
+        log.info("username = {} / age = {}",helloData.getUsername(),helloData.getAge());
+        log.info("Hello Data = {}",helloData);
+        return "ok";
+    }
 
+
+    @ResponseBody
+    @RequestMapping("/model-arribute-v2")
+    public String modelAttributeV2( HelloData helloData){
         log.info("username = {} / age = {}",helloData.getUsername(),helloData.getAge());
         log.info("Hello Data = {}",helloData);
         return "ok";
